@@ -60,6 +60,10 @@ public class CardTrick {
         } else {
             System.out.println("Sorry, your card is not in the magic hand.");
         }
+        Card luckyCard = new Card();
+        luckyCard.setValue(7);  // Set the card number
+        luckyCard.setSuit(Card.SUITS[1]);  // Set the card suit
+        magicHand[3] = luckyCard;
     }
 
     // Generate a random number between 1 and 13 (inclusive)
@@ -67,7 +71,8 @@ public class CardTrick {
         return (int) (Math.random() * 13) + 1;
     }
 
-    // Generate a random
+    
+    
 
     
 }
