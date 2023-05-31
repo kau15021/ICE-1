@@ -4,28 +4,70 @@
  */
 package card;
 
+
+ import java.util.Random;
+import java.util.Scanner;
 /**
  * A class that fills a magic hand of 7 cards with random Card Objects
  * and then asks the user to pick a card and searches the array of cards
  * for the match to the user's card. To be used as starting code in ICE 1
  * @author srinivsi
  */
+import java.util.Scanner;
+//Name - Harleen Kaur , Student ID - 991709976
 public class CardTrick {
-    
-    public static void main(String[] args)
-    {
+
+    public static void main(String[] args) {
         Card[] magicHand = new Card[7];
-        
-        for (int i=0; i<magicHand.length; i++)
+
+        for (int i = 0; i < magicHand.length; i++) 
         {
             Card c = new Card();
-            //c.setValue(insert call to random number generator here)
-            //c.setSuit(Card.SUITS[insert call to random number between 0-3 here])
+            c.setValue(generateRandomNumber());
+           
+            
+//Generate a random value between 1 and 13
+
+            c.setSuit(Card.SUITS[( Card.SUITS.length - 4)]);
+
+            magicHand[i] = c;
         }
-        
-        //insert code to ask the user for Card value and suit, create their card
-        // and search magicHand here
-        //Then report the result here
+
+        // asking user to input a value
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter card value (1-13): ");
+        int value = scanner.nextInt();
+        System.out.print("Enter card suit (0-3): ");
+        int suit = scanner.nextInt();
+
+        // Create the user's card
+        Card userCard = new Card();
+        userCard.setValue(value);
+        userCard.setSuit(Card.SUITS[suit]);
+
+        // Search for the user's card in magicHand
+        boolean found = false;
+        for (Card card : magicHand) {
+            if (card.equals(userCard)) {
+                found = true;
+                break;
+            }
+        }
+
+        // Report the result
+        if (found) {
+            System.out.println("Congratulations! Your card is in the magic hand.");
+        } else {
+            System.out.println("Sorry, your card is not in the magic hand.");
+        }
     }
+
+    // Generate a random number between 1 and 13 (inclusive)
+    private static int generateRandomNumber() {
+        return (int) (Math.random() * 13) + 1;
+    }
+
+    // Generate a random
+
     
 }
